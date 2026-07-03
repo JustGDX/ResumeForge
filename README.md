@@ -8,7 +8,7 @@ Built with a clean UI, live preview, and full customization for job seekers, pro
 
 ## 🚀 Live Demo
 
-[Try ResumeForge](https://rf-resumeforge.netlify.app/)
+🌐 [Try ResumeForge](https://rf-resumeforge.netlify.app/)
 
 ---
 
