@@ -8,7 +8,7 @@ Built with a clean UI, live preview, and full customization for job seekers, pro
 
 ## 🚀 Live Demo
 
-🌐 [Try it here:][([https://mainportfolio1.netlify.app/])
+🌐 [Try it here](https://mainportfolio1.netlify.app/)
 
 ---
 
