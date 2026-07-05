@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeForge</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='100%25' stop-color='%231d4ed8'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='70' font-family='Arial Black,sans-serif' font-size='60' font-weight='900' fill='white' text-anchor='middle'>R</text></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800&family=Roboto+Slab:wght@300;400;500;700&family=Merriweather:wght@300;400;700;900&family=Lato:wght@300;400;700;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="icon" type="image/png" href="img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png" />
+    <link rel="manifest" href="img/site.webmanifest" />
+</head>
+<body>
+
+    <!-- Loader -->
+    <div class="loader-scr" id="loaderScr">
+        <div class="loader-content">
+            <div class="loader-logo"><i class="fas fa-file-contract"></i></div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+            <p>Loading ResumeForge...</p>
+        </div>
+    </div>
+
+    <!-- Layout Chooser -->
+    <div class="lc-overlay" id="layoutChooser">
+        <div class="lc-modal">
+            <div class="lc-head">
+                <div class="lc-icon"><i class="fas fa-magic"></i></div>
+                <h2>Choose Your Resume Layout</h2>
+                <p>Pick the template that best matches your career. You can change it anytime later.</p>
+            </div>
+            <div class="lc-grid">
+                <div class="lc-card active" data-layout="classic">
+                    <div class="lc-prev"><div class="lcp lcp-classic"><div class="lcph"></div><div class="lcpb"><div class="lcpl"></div><div class="lcpl w70"></div><div class="lcpl"></div></div></div></div>
+                    <div class="lc-body">
+                        <h3>Classic</h3>
+                        <p>Traditional top-header. Clean, professional, and safe.</p>
+                        <span class="lc-tag best">⭐ Most Popular</span>
+                        <span class="lc-good">Best for: General jobs, corporate, finance</span>
+                    </div>
+                </div>
+                <div class="lc-card" data-layout="modern">
+                    <div class="lc-prev"><div class="lcp lcp-modern"><div class="lcps"></div><div class="lcpm"><div class="lcpl"></div><div class="lcpl w70"></div></div></div></div>
+                    <div class="lc-body">
+                        <h3>Modern</h3>
+                        <p>Sidebar with contact and skills on the left.</p>
+                        <span class="lc-tag rec">💻 Recommended for Tech</span>
+                        <span class="lc-good">Best for: Developers, engineers, IT, startups</span>
+                    </div>
+                </div>
+                <div class="lc-card" data-layout="elegant">
+                    <div class="lc-prev"><div class="lcp lcp-elegant"><div class="lcpc"></div><div class="lcpd"></div><div class="lcpb"><div class="lcpl"></div><div class="lcpl w70"></div></div></div></div>
+                    <div class="lc-body">
+                        <h3>Elegant</h3>
+                        <p>Centered header with serif fonts. Timeless.</p>
+                        <span class="lc-tag aca">🎓 For Academia</span>
+                        <span class="lc-good">Best for: Researchers, professors, writers</span>
+                    </div>
+                </div>
+                <div class="lc-card" data-layout="compact">
+                    <div class="lc-prev"><div class="lcp lcp-compact"><div class="lcpbar"></div><div class="lcpcols"><div class="lcpcol"></div><div class="lcpcol"></div></div></div></div>
+                    <div class="lc-body">
+                        <h3>Compact</h3>
+                        <p>Two-column body fits max content on one page.</p>
+                        <span class="lc-tag exp">💼 For Experienced</span>
+                        <span class="lc-good">Best for: Senior roles, many jobs to list</span>
+                    </div>
+                </div>
+                <div class="lc-card" data-layout="creative">
+                    <div class="lc-prev"><div class="lcp lcp-creative"><div class="lcpacc"></div><div class="lcpb"><div class="lcpci"></div><div class="lcpl"></div><div class="lcpl w70"></div></div></div></div>
+                    <div class="lc-body">
+                        <h3>Creative</h3>
+                        <p>Bold accent bar. Modern and stands out.</p>
+                        <span class="lc-tag des">🎨 For Designers</span>
+                        <span class="lc-good">Best for: Designers, marketers, creatives</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lc-actions">
+                <button class="btn btn-lg btn-primary" id="lcConfirm"><i class="fas fa-check"></i> Confirm & Start Building</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+        <div class="hdr-inner">
+            <div class="logo">
+                <div class="logo-ic"><i class="fas fa-file-contract"></i></div>
+                <h1 class="logo-tt">ResumeForge</h1>
+            </div>
+            <nav class="hdr-nav">
+                <button class="ic-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <div class="nav-sep"></div>
+                <button class="hb" id="saveBtn"><i class="fas fa-save"></i><span>Save</span></button>
+                <button class="hb" id="loadBtn"><i class="fas fa-folder-open"></i><span>Load</span></button>
+                <button class="hb" id="resetBtn"><i class="fas fa-undo"></i><span>Reset</span></button>
+                <div class="nav-sep"></div>
+                <button class="hb hpdf" id="dlPdf"><i class="fas fa-file-pdf"></i><span>PDF</span></button>
+                <button class="hb hprn" id="dlPrint"><i class="fas fa-print"></i><span>Print</span></button>
+                <button class="hb himg" id="dlImg"><i class="fas fa-image"></i><span>PNG</span></button>
+            </nav>
+            <button class="mob-tog" id="mobTog"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="mob-nav" id="mobNav">
+            <button class="hb" id="themeToggleM"><i class="fas fa-moon"></i> Theme</button>
+            <button class="hb" id="saveBtnM"><i class="fas fa-save"></i> Save</button>
+            <button class="hb" id="loadBtnM"><i class="fas fa-folder-open"></i> Load</button>
+            <button class="hb" id="resetBtnM"><i class="fas fa-undo"></i> Reset</button>
+            <button class="hb hpdf" id="dlPdfM"><i class="fas fa-file-pdf"></i> PDF</button>
+            <button class="hb hprn" id="dlPrintM"><i class="fas fa-print"></i> Print</button>
+            <button class="hb himg" id="dlImgM"><i class="fas fa-image"></i> PNG</button>
+        </div>
+    </header>
+
+    <!-- Strip -->
+    <div class="strip">
+        <div class="strip-in">
+            <div class="sg">
+                <span class="sl">Layout</span>
+                <div class="lpicks">
+                    <button class="lpk active" data-layout="classic" title="Classic"><div class="lpkb lpkb-classic"><div class="lpkh"></div><div class="lpkb2"><div class="lpkl"></div><div class="lpkl s"></div></div></div></button>
+                    <button class="lpk" data-layout="modern" title="Modern"><div class="lpkb lpkb-modern"><div class="lpks"></div><div class="lpkm"><div class="lpkl"></div><div class="lpkl s"></div></div></div></button>
+                    <button class="lpk" data-layout="elegant" title="Elegant"><div class="lpkb lpkb-elegant"><div class="lpkcn"></div><div class="lpkd"></div><div class="lpkb2"><div class="lpkl"></div></div></div></button>
+                    <button class="lpk" data-layout="compact" title="Compact"><div class="lpkb lpkb-compact"><div class="lpktb"></div><div class="lpkcs"><div class="lpkc"></div><div class="lpkc"></div></div></div></button>
+                    <button class="lpk" data-layout="creative" title="Creative"><div class="lpkb lpkb-creative"><div class="lpkab"></div><div class="lpkb2"><div class="lpkci"></div><div class="lpkl"></div></div></div></button>
+                </div>
+            </div>
+            <div class="sg">
+                <span class="sl"><i class="fas fa-palette"></i> Accent</span>
+                <div class="srow">
+                    <button class="sw active" data-lc="#2563eb" style="background:#2563eb"></button>
+                    <button class="sw" data-lc="#059669" style="background:#059669"></button>
+                    <button class="sw" data-lc="#7c3aed" style="background:#7c3aed"></button>
+                    <button class="sw" data-lc="#e11d48" style="background:#e11d48"></button>
+                    <button class="sw" data-lc="#d97706" style="background:#d97706"></button>
+                    <button class="sw" data-lc="#475569" style="background:#475569"></button>
+                    <div class="cpk-wrap" data-picker="accent" title="Custom hex color">
+                        <i class="fas fa-eye-dropper cpk-ic"></i>
+                        <div class="cpk-pop" id="accentPop">
+                            <div class="cpk-pop-hd">
+                                <span>Custom Accent Color</span>
+                                <button class="cpk-pop-close" data-close-picker><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="cpk-preview" id="accentPreview"></div>
+                            <div class="cpk-hex-row">
+                                <span class="cpk-hex-hash">#</span>
+                                <input type="text" class="cpk-hex-input" id="accentHex" maxlength="6" placeholder="2563EB">
+                                <button class="cpk-hex-apply" data-apply="accent">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sg">
+                <button class="fontbtn" id="fontOpen"><i class="fas fa-text-height"></i> Fonts & Colors</button>
+            </div>
+            <div class="sg">
+                <span class="sl">Spacing</span>
+                <select class="ssel" id="spSel">
+                    <option value="compact">Tight</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="relaxed">Relaxed</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Panel -->
+    <div class="ovl" id="fontOvl"></div>
+    <div class="spanel" id="fontPanel">
+        <div class="sp-hd"><h3><i class="fas fa-text-height"></i> Font Settings</h3><button class="sp-x" id="fontClose"><i class="fas fa-times"></i></button></div>
+        <div class="sp-bd">
+            <p class="sp-desc">Customize font, size, and color per area. Colors here override defaults independently.</p>
+            
+            <div class="fci">
+                <label>Header / Name</label>
+                <select class="fcs" data-fa="header"><option>Inter</option><option>Playfair Display</option><option>Montserrat</option><option>Raleway</option><option>Merriweather</option><option>Roboto Slab</option><option>Lato</option><option>Open Sans</option><option>Georgia</option><option>Arial</option></select>
+                <div class="fci-row">
+                    <div class="fci-sub"><span>Size</span><select class="fcszs" data-sa="header"><option value="small">S</option><option value="medium" selected>M</option><option value="large">L</option></select></div>
+                    <div class="fci-sub"><span>Color</span><button class="fcolor-btn" data-fcolor-area="header" title="Header color"><span class="fcolor-swatch" id="fcSwatch_header"></span></button></div>
+                </div>
+            </div>
+            
+            <div class="fci">
+                <label>Section Titles</label>
+                <select class="fcs" data-fa="sectionTitle"><option>Inter</option><option>Playfair Display</option><option>Montserrat</option><option>Raleway</option><option>Merriweather</option><option>Roboto Slab</option><option>Lato</option><option>Open Sans</option><option>Georgia</option><option>Arial</option></select>
+                <div class="fci-row">
+                    <div class="fci-sub"><span>Size</span><select class="fcszs" data-sa="sectionTitle"><option value="small">S</option><option value="medium" selected>M</option><option value="large">L</option></select></div>
+                    <div class="fci-sub"><span>Color</span><button class="fcolor-btn" data-fcolor-area="sectionTitle" title="Section title color"><span class="fcolor-swatch" id="fcSwatch_sectionTitle"></span></button></div>
+                </div>
+            </div>
+            
+            <div class="fci">
+                <label>Body Text</label>
+                <select class="fcs" data-fa="body"><option>Inter</option><option>Playfair Display</option><option>Montserrat</option><option>Raleway</option><option>Merriweather</option><option>Roboto Slab</option><option>Lato</option><option>Open Sans</option><option>Georgia</option><option>Arial</option></select>
+                <div class="fci-row">
+                    <div class="fci-sub"><span>Size</span><select class="fcszs" data-sa="body"><option value="small">S</option><option value="medium" selected>M</option><option value="large">L</option></select></div>
+                    <div class="fci-sub"><span>Color</span><button class="fcolor-btn" data-fcolor-area="body" title="Body text color"><span class="fcolor-swatch" id="fcSwatch_body"></span></button></div>
+                </div>
+            </div>
+            
+            <div class="fci">
+                <label>Contact Info</label>
+                <select class="fcs" data-fa="contact"><option>Inter</option><option>Montserrat</option><option>Lato</option><option>Open Sans</option><option>Georgia</option><option>Arial</option></select>
+                <div class="fci-row">
+                    <div class="fci-sub"><span>Color</span><button class="fcolor-btn" data-fcolor-area="contact" title="Contact color"><span class="fcolor-swatch" id="fcSwatch_contact"></span></button></div>
+                </div>
+            </div>
+            
+            <div class="fci">
+                <label>Skills / Tags</label>
+                <select class="fcs" data-fa="skills"><option>Inter</option><option>Montserrat</option><option>Lato</option><option>Open Sans</option><option>Georgia</option><option>Arial</option></select>
+                <div class="fci-row">
+                    <div class="fci-sub"><span>Color</span><button class="fcolor-btn" data-fcolor-area="skills" title="Skills color"><span class="fcolor-swatch" id="fcSwatch_skills"></span></button></div>
+                </div>
+            </div>
+            
+            <div class="fci">
+                <label>Declaration</label>
+                <select class="fcs" data-fa="declaration"><option>Inter</option><option>Playfair Display</option><option>Merriweather</option><option>Lato</option><option>Georgia</option><option>Arial</option></select>
+                <div class="fci-row">
+                    <div class="fci-sub"><span>Color</span><button class="fcolor-btn" data-fcolor-area="declaration" title="Declaration color"><span class="fcolor-swatch" id="fcSwatch_declaration"></span></button></div>
+                </div>
+            </div>
+            
+            <button class="btn btn-full btn-ghost" id="resetFonts"><i class="fas fa-undo"></i> Reset All Fonts & Colors</button>
+        </div>
+    </div>
+
+    <!-- Per-area color picker popover -->
+    <div class="fcolor-pop" id="fcolorPop">
+        <div class="cpk-pop-hd">
+            <span id="fcolorPopTitle">Color</span>
+            <button class="cpk-pop-close" id="fcolorClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cpk-preview" id="fcolorPreview"></div>
+        <div class="fcolor-presets">
+            <button class="fcp-sw" data-fcp="#1f2937" style="background:#1f2937"></button>
+            <button class="fcp-sw" data-fcp="#111827" style="background:#111827"></button>
+            <button class="fcp-sw" data-fcp="#374151" style="background:#374151"></button>
+            <button class="fcp-sw" data-fcp="#1e3a5f" style="background:#1e3a5f"></button>
+            <button class="fcp-sw" data-fcp="#dc2626" style="background:#dc2626"></button>
+            <button class="fcp-sw" data-fcp="#059669" style="background:#059669"></button>
+            <button class="fcp-sw" data-fcp="#7c3aed" style="background:#7c3aed"></button>
+            <button class="fcp-sw" data-fcp="#d97706" style="background:#d97706"></button>
+        </div>
+        <div class="cpk-hex-row">
+            <span class="cpk-hex-hash">#</span>
+            <input type="text" class="cpk-hex-input" id="fcolorHex" maxlength="6" placeholder="1F2937">
+            <button class="cpk-hex-apply" id="fcolorApply">Apply</button>
+        </div>
+        <button class="fcolor-inherit" id="fcolorInherit"><i class="fas fa-link"></i> Use default color</button>
+    </div>
+
+    <!-- Main -->
+    <main class="app-main">
+        <div class="mg" id="mg">
+            <div class="vtabs-wrap">
+                <div class="vtabs">
+                    <button class="vtab active" data-v="edit"><i class="fas fa-edit"></i> Edit</button>
+                    <button class="vtab" data-v="preview"><i class="fas fa-eye"></i> Preview</button>
+                </div>
+            </div>
+            <div class="ec" id="ec">
+                <div class="ec-scroll">
+                    <div class="sec-adder">
+                        <button class="add-btn" id="addBtn"><i class="fas fa-plus"></i> Add Section</button>
+                        <div class="add-dd" id="addDd">
+                            <button data-sec="summary"><i class="fas fa-align-left"></i> Summary</button>
+                            <button data-sec="experience"><i class="fas fa-briefcase"></i> Experience</button>
+                            <button data-sec="education"><i class="fas fa-graduation-cap"></i> Education</button>
+                            <button data-sec="skills"><i class="fas fa-tools"></i> Skills</button>
+                            <button data-sec="certifications"><i class="fas fa-certificate"></i> Certifications</button>
+                            <button data-sec="projects"><i class="fas fa-rocket"></i> Projects</button>
+                            <button data-sec="languages"><i class="fas fa-globe-americas"></i> Languages</button>
+                            <button data-sec="awards"><i class="fas fa-trophy"></i> Awards</button>
+                            <button data-sec="volunteer"><i class="fas fa-hands-helping"></i> Volunteering</button>
+                            <button data-sec="interests"><i class="fas fa-heart"></i> Interests</button>
+                            <button data-sec="references"><i class="fas fa-user-check"></i> References</button>
+                            <button data-sec="custom"><i class="fas fa-puzzle-piece"></i> Custom</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-hd" data-col="pBd">
+                            <span><i class="fas fa-user"></i><span>Personal Info</span></span>
+                            <i class="fas fa-chevron-down chv"></i>
+                        </div>
+                        <div class="card-bd open" id="pBd">
+                            <div class="photo-box">
+                                <div class="pzone" id="pZone">
+                                    <input type="file" id="pInput" accept="image/*" hidden>
+                                    <div class="pz-e" id="pE"><i class="fas fa-camera"></i><span>Add photo</span></div>
+                                    <div class="pz-f" id="pF" style="display:none">
+                                        <img id="pImg" alt="">
+                                        <div class="pz-hov">
+                                            <button class="pzbt"><i class="fas fa-camera"></i></button>
+                                            <button class="pzbt pzbt-del" id="pDel"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ff full">
+                                <label>Photo Shape</label>
+                                <div class="shape-picks">
+                                    <button class="shape-btn active" data-shape="circle"><div class="shape-prev sp-circle"></div><span>Circle</span></button>
+                                    <button class="shape-btn" data-shape="rounded"><div class="shape-prev sp-rounded"></div><span>Rounded</span></button>
+                                    <button class="shape-btn" data-shape="square"><div class="shape-prev sp-square"></div><span>Square</span></button>
+                                    <button class="shape-btn" data-shape="hex"><div class="shape-prev sp-hex"></div><span>Hexagon</span></button>
+                                </div>
+                            </div>
+                            <div class="ff-grid">
+                                <div class="ff"><label>Full Name</label><input class="fin" data-p="fullName" placeholder="John Doe"></div>
+                                <div class="ff"><label>Job Title</label><input class="fin" data-p="jobTitle" placeholder="Software Engineer"></div>
+                                <div class="ff"><label>Email</label><input class="fin" data-p="email" placeholder="john@example.com"></div>
+                                <div class="ff"><label>Phone</label><input class="fin" data-p="phone" placeholder="+1 555 123 4567"></div>
+                                <div class="ff"><label>Location</label><input class="fin" data-p="location" placeholder="San Francisco, CA"></div>
+                                <div class="ff"><label>LinkedIn</label><input class="fin" data-p="linkedin" placeholder="linkedin.com/in/johndoe"></div>
+                                <div class="ff"><label>Website</label><input class="fin" data-p="website" placeholder="johndoe.dev"></div>
+                                <div class="ff"><label>GitHub</label><input class="fin" data-p="github" placeholder="github.com/johndoe"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-hd" data-col="dBd">
+                            <span><i class="fas fa-file-signature"></i><span>Declaration</span></span>
+                            <div class="hd-r">
+                                <label class="tsw"><input type="checkbox" id="declOn" checked><span class="tsl"></span></label>
+                                <i class="fas fa-chevron-down chv"></i>
+                            </div>
+                        </div>
+                        <div class="card-bd open" id="dBd">
+                            <div class="note"><i class="fas fa-info-circle"></i> Toggle above to show/hide declaration.</div>
+                            <div class="ff full"><label>Declaration Text</label><textarea class="fta" id="declText" rows="3">I hereby declare that all information in this curriculum vitae is true and correct to the best of my knowledge and belief.</textarea></div>
+                            <div class="ff full"><label>Place</label><input class="fin" id="declPlace" placeholder="City name"></div>
+                            <div class="ff full">
+                                <label>Signature (appears above your name)</label>
+                                <div class="sig-zone" id="sigZone">
+                                    <input type="file" id="sigIn" accept="image/*" hidden>
+                                    <div class="sz-e" id="sigE">
+                                        <i class="fas fa-signature"></i>
+                                        <div><strong>Upload signature</strong><small>PNG with transparent bg works best</small></div>
+                                    </div>
+                                    <div class="sz-f" id="sigF" style="display:none">
+                                        <img id="sigImg" alt="">
+                                        <div class="sz-btns">
+                                            <button class="mbtn" id="sigChg"><i class="fas fa-sync-alt"></i></button>
+                                            <button class="mbtn danger" id="sigRm"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ff full sig-size-box" id="sigSizeBox" style="display:none">
+                                <label>Signature Size: <span id="sigSizeVal">100</span>px</label>
+                                <input type="range" class="range" id="sigSize" min="40" max="220" value="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="secCont"></div>
+                    <div class="scroll-spacer"></div>
+                </div>
+            </div>
+
+            <div class="pv" id="pv">
+                <div class="pv-hd">
+                    <button class="pv-back-btn" id="pvBackBtn"><i class="fas fa-arrow-left"></i> <span>Back to Edit</span></button>
+                    <span><i class="fas fa-eye"></i> Preview</span>
+                    <div class="zbar">
+                        <button class="zbt" id="zOut"><i class="fas fa-minus"></i></button>
+                        <span class="zv" id="zVal">Fit</span>
+                        <button class="zbt" id="zIn"><i class="fas fa-plus"></i></button>
+                        <button class="zbt" id="zFit"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+                <div class="pv-bd" id="pvBd">
+                    <div class="rpage-wrap" id="rPageWrap">
+                        <div class="rpage" id="rPage">
+                            <div class="rcontent" id="rContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="back-edit-fab" id="backEditFab"><i class="fas fa-arrow-left"></i> Back to Edit</button>
+        </div>
+    </main>
+
+    <footer class="foot">
+        <span>© 2026 Resume Builder</span>
+        <span class="fdot">·</span>
+        <span>🐙 JustGDX</span>
+    </footer>
+
+    <!-- Badge Modal -->
+    <div class="mbg" id="badgeModal">
+        <div class="modal">
+            <div class="m-hd"><h3><i class="fas fa-award"></i> Badge</h3><button class="mx" id="bmX"><i class="fas fa-times"></i></button></div>
+            <div class="m-bd">
+                <div class="bd-zone" id="bdZone">
+                    <input type="file" id="bdIn" accept="image/*" hidden>
+                    <div class="bdz-e" id="bdE"><i class="fas fa-cloud-upload-alt"></i><p>Drop badge or click</p></div>
+                    <div class="bdz-p" id="bdP" style="display:none"><img id="bdImg" alt=""><button class="mbtn" id="bdChg"><i class="fas fa-sync-alt"></i></button></div>
+                </div>
+                <div class="ff" style="margin-top:.6rem"><label>Verify URL</label><input class="fin" id="bdUrl" placeholder="https://credly.com/..."></div>
+            </div>
+            <div class="m-ft"><button class="btn btn-ghost" id="bmNo">Cancel</button><button class="btn btn-primary" id="bmYes"><i class="fas fa-check"></i> Save</button></div>
+        </div>
+    </div>
+
+    <!-- Custom Modal -->
+    <div class="mbg" id="customModal">
+        <div class="modal msm">
+            <div class="m-hd"><h3><i class="fas fa-puzzle-piece"></i> Custom Section</h3><button class="mx" id="cmX"><i class="fas fa-times"></i></button></div>
+            <div class="m-bd"><div class="ff"><label>Section Name</label><input class="fin" id="cmIn" placeholder="e.g. Publications"></div></div>
+            <div class="m-ft"><button class="btn btn-ghost" id="cmNo">Cancel</button><button class="btn btn-primary" id="cmYes"><i class="fas fa-plus"></i> Create</button></div>
+        </div>
+    </div>
+
+    <div class="toast-box" id="toastBox"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
